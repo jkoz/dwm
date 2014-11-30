@@ -54,7 +54,7 @@
 #define WIDTH(X)                ((X)->w + 2 * (X)->bw)
 #define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
-#define TEXTW(X)                (drw_font_getexts_width(drw->font, X, strlen(X)) + drw->font->h)
+#define TEXTW(X)                (drw_font_getexts_width(drw->dpy, drw->font, X, strlen(X)) + drw->font->h)
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
@@ -706,8 +706,6 @@ drawbar(Monitor *m) {
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, m->tagset[m->seltags] & 1 << i ? &scheme[SchemeSel] : &scheme[SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, tags[i], urg & 1 << i);
-		drw_rect(drw, x, 0, w, bh, m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
-		           occ & 1 << i, urg & 1 << i);
 		x += w;
 	}
 	w = blw = TEXTW(m->ltsymbol);
@@ -731,7 +729,6 @@ drawbar(Monitor *m) {
 		if(m->sel) {
 			drw_setscheme(drw, m == selmon ? &scheme[SchemeSel] : &scheme[SchemeNorm]);
 			drw_text(drw, x, 0, w, bh, m->sel->name, 0);
-			drw_rect(drw, x, 0, w, bh, m->sel->isfixed, m->sel->isfloating, 0);
 		}
 		else {
 			drw_setscheme(drw, &scheme[SchemeNorm]);
@@ -792,7 +789,7 @@ focus(Client *c) {
 		detachstack(c);
 		attachstack(c);
 		grabbuttons(c, True);
-		XSetWindowBorder(dpy, c->win, scheme[SchemeSel].border->rgb);
+		XSetWindowBorder(dpy, c->win, scheme[SchemeSel].border->rgb.pixel);
 		setfocus(c);
 	}
 	else {
@@ -1040,7 +1037,7 @@ manage(Window w, XWindowAttributes *wa) {
 
 	wc.border_width = c->bw;
 	XConfigureWindow(dpy, w, CWBorderWidth, &wc);
-	XSetWindowBorder(dpy, w, scheme[SchemeNorm].border->rgb);
+	XSetWindowBorder(dpy, w, scheme[SchemeNorm].border->rgb.pixel);
 	configure(c); /* propagates border_width, if size doesn't change */
 	updatewindowtype(c);
 	updatesizehints(c);
@@ -1509,7 +1506,7 @@ setup(void) {
 	fnt = drw_font_create(dpy, font);
 	sw = DisplayWidth(dpy, screen);
 	sh = DisplayHeight(dpy, screen);
-	bh = fnt->h + 2;
+	bh = fnt->h;
 	drw = drw_create(dpy, screen, root, sw, sh);
 	drw_setfont(drw, fnt);
 	updategeom();
@@ -1685,7 +1682,7 @@ unfocus(Client *c, Bool setfocus) {
 	if(!c)
 		return;
 	grabbuttons(c, False);
-	XSetWindowBorder(dpy, c->win, scheme[SchemeNorm].border->rgb);
+	XSetWindowBorder(dpy, c->win, scheme[SchemeNorm].border->rgb.pixel);
 	if(setfocus) {
 		XSetInputFocus(dpy, root, RevertToPointerRoot, CurrentTime);
 		XDeleteProperty(dpy, root, netatom[NetActiveWindow]);
