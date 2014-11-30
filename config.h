@@ -5,7 +5,7 @@ static const char font[]            = "-*-xbmicons-medium-r-*-*-12-*-*-*-*-*-*-*
                                       "-*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#002b36";
-static const char normfgcolor[]     = "#839496";
+static const char normfgcolor[]     = "#bbbbbb";
 static const char selbordercolor[]  = "#005577";
 static const char selbgcolor[]      = "#073642";
 static const char selfgcolor[]      = "#eeeeee";
