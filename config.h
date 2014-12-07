@@ -1,8 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char font[]            = "-*-xbmicons-medium-r-*-*-12-*-*-*-*-*-*-*" ","
-                                      "-*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*";
+static const char font[] = "Source Code Pro:size=10:antialias=true"; /* -fn option; default X11 font or font set      */
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#002b36";
 static const char normfgcolor[]     = "#bbbbbb";
