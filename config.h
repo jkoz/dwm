@@ -23,10 +23,10 @@ static const Rule rules[] = {
 	 */
 	/* class			instance			title       tags mask     isfloating factor   monitor */
 	{ "Gimp",			NULL,				NULL,       0,            True,      1.0,     -1 },
-	{ "Ldoce5viewer",	"ldoce5viewer",		NULL,       0,            True,      0.8,     -1 },
-	{ "Stardict",		"stardict",			NULL,       0,            True,      0.8,     -1 },
+	{ "Ldoce5viewer",	"ldoce5viewer",		NULL,       0,            True,      1.0,     -1 },
+	{ "Stardict",		"stardict",			NULL,       0,            True,      1.0,     -1 },
 	{ "Chromium",		"Chromium",			NULL,       0,            True,      1.0,     -1 },
-	{ "st-256color",	"terminaldropdown",	NULL,       0,            True,      0.98,     -1 }
+	{ "st-256color",	"terminaldropdown",	NULL,       0,            True,      1.0,     -1 }
 };
 
 /* layout(s) */
