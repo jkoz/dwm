@@ -13,6 +13,11 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
+static const Bool systraypinningfailfirst = True;   /* True: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
+static const Bool showsystray       = True;     /* False means no systray */
+static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4" };
 
@@ -23,10 +28,10 @@ static const Rule rules[] = {
 	 */
 	/* class			instance			title       tags mask     isfloating factor   monitor */
 	{ "Gimp",			NULL,				NULL,       0,            True,      1.0,     -1 },
-	{ "Ldoce5viewer",	"ldoce5viewer",		NULL,       0,            True,      0.8,     -1 },
-	{ "Stardict",		"stardict",			NULL,       0,            True,      0.8,     -1 },
+	{ "Ldoce5viewer",	"ldoce5viewer",		NULL,       0,            True,      1.0,     -1 },
+	{ "Stardict",		"stardict",			NULL,       0,            True,      1.0,     -1 },
 	{ "Chromium",		"Chromium",			NULL,       0,            True,      1.0,     -1 },
-	{ "st-256color",	"terminaldropdown",	NULL,       0,            True,      0.98,     -1 }
+	{ "st-256color",	"terminaldropdown",	NULL,       0,            True,      1.0,     -1 }
 };
 
 /* layout(s) */
