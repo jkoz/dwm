@@ -24,7 +24,7 @@ while true; do free -m | grep Mem | awk '{printf "MM:%0.1f%\n\r", ((($2 - $4)/$2
 while true; do df -lh | awk '{if ($6 == "/") { print "HH:"$5 }}'; sleep 10; done > $fifofile &
 
 
-weather="" clock="" battery="" cpu="" mem="" hdd="" sep=" | "
+weather="" clock="" battery="" cpu="" mem="" hdd="" sep="   "
 cat ${fifofile} | while read -r line; do
     case "$line" in
         W*) weather="${line#?}${sep}";;
@@ -34,6 +34,7 @@ cat ${fifofile} | while read -r line; do
         M*) mem="${line#?}${sep}";;
         H*) hdd="${line#?}${sep}";;
     esac
-    status=$(echo "${weather}${cpu}${mem}${hdd}${clock}${battery}" | sed "s/$sep$//")
+    # TODO: hack preseve spaces for icons in systray of dwm
+    status=$(echo "${weather}${cpu}${mem}${hdd}${clock}${battery}           " | sed "s/$sep$//")
     xsetroot -name "$status"
 done
