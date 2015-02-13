@@ -8,7 +8,7 @@ rm -rf ${fifofile}; mkfifo ${fifofile}
 while true; do curl --silent 'http://weather.yahooapis.com/forecastrss?w=8676&u=c' | sed -ne '/Current Conditions/{n;p}' | sed -e 's/<BR \/>//' | xargs -r0 printf "W%s"; sleep 5; done > $fifofile &
 
 # D: date
-while true; do date '+D%a %I:%M:%S %p'; sleep 1; done > $fifofile &
+while true; do date '+D%b %d  %I:%M%p'; sleep 1; done > $fifofile &
 
 # B: battery
 while true; do acpi -b | awk '{gsub(",", ""); print $4}' | xargs -r0 printf "BB:%s"; sleep 2; done > $fifofile &

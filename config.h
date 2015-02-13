@@ -1,11 +1,11 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char font[] = "Source Code Pro:size=10:antialias=true"; /* -fn option; default X11 font or font set      */
+static const char font[] = "Cousine:size=10:antialias=true"; /* -fn option; default X11 font or font set      */
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#002b36";
 static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#005577";
+static const char selbordercolor[]  = "#FF6600";
 static const char selbgcolor[]      = "#073642";
 static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -28,9 +28,9 @@ static const Rule rules[] = {
 	 */
 	/* class			instance			title       tags mask     isfloating factor   monitor */
 	{ "Gimp",			NULL,				NULL,       0,            True,      1.0,     -1 },
-	{ "Ldoce5viewer",	"ldoce5viewer",		NULL,       0,            True,      1.0,     -1 },
+	//{ "Ldoce5viewer",	"ldoce5viewer",		NULL,       0,            True,      1.0,     -1 },
 	{ "Stardict",		"stardict",			NULL,       0,            True,      1.0,     -1 },
-	{ "Chromium",		"Chromium",			NULL,       0,            True,      1.0,     -1 },
+	//{ "Chromium",		"Chromium",			NULL,       0,            True,      1.0,     -1 },
 	{ "st-256color",	"terminaldropdown",	NULL,       0,            True,      1.0,     -1 }
 };
 
@@ -39,11 +39,12 @@ static const float mfact      = 0.55; /* factor of master area size [0.05..0.95]
 static const int nmaster      = 1;    /* number of clients in master area */
 static const Bool resizehints = True; /* True means respect size hints in tiled resizals */
 
+#include "movestack.c"
 #include "bstack.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "B",      bstack },
 	{ "T",      tile },    /* first entry is default */
+	{ "B",      bstack },
 	{ "F",      NULL },    /* no layout function means floating behavior */
 	{ "M",      monocle },
 };
@@ -75,10 +76,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ShiftMask,             XK_space,  setlayout,      {0} },
