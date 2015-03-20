@@ -4,11 +4,11 @@
 static const char font[] = "Cousine:size=10:antialias=true"; /* -fn option; default X11 font or font set      */
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#002b36";
-static const char normfgcolor[]     = "#bbbbbb";
+static const char normfgcolor[]     = "#eee8d5";
 static const char selbordercolor[]  = "#FF6600";
-static const char selbgcolor[]      = "#073642";
-static const char selfgcolor[]      = "#eeeeee";
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const char selbgcolor[]      = "#859900";
+static const char selfgcolor[]      = "#eee8d5";
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
@@ -67,7 +67,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	//{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
