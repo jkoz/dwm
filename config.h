@@ -5,7 +5,7 @@ static const char font[] = "Cousine:size=10:antialias=true"; /* -fn option; defa
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#002b36";
 static const char normfgcolor[]     = "#eee8d5";
-static const char selbordercolor[]  = "#FF6600";
+static const char selbordercolor[]  = "#859900";
 static const char selbgcolor[]      = "#859900";
 static const char selfgcolor[]      = "#eee8d5";
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -29,9 +29,10 @@ static const Rule rules[] = {
 	/* class			instance			title       tags mask     isfloating factor   monitor */
 	{ "Gimp",			NULL,				NULL,       0,            True,      1.0,     -1 },
 	//{ "Ldoce5viewer",	"ldoce5viewer",		NULL,       0,            True,      1.0,     -1 },
-	{ "Stardict",		"stardict",			NULL,       0,            True,      1.0,     -1 },
+	//{ "Stardict",		"stardict",			NULL,       0,            True,      1.0,     -1 },
 	//{ "Chromium",		"Chromium",			NULL,       0,            True,      1.0,     -1 },
-	{ "st-256color",	"terminaldropdown",	NULL,       0,            True,      1.0,     -1 }
+	{ "st-256color",	"terminaldropdown",	NULL,       0,            True,      1.0,     -1 },
+	{ "st-256color",	"Fzf",				NULL,       0,            True,      0.7,     -1 }
 };
 
 /* layout(s) */
